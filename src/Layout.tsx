@@ -4,9 +4,19 @@ import BlurText from "./components/BlurText";
 import ShinyText from "./components/ShinyText";
 import useIsMobile from "./hooks/useIsMobile";
 import { motion } from "motion/react";
-// import Dither from "./components/Dither";
+import github from "./assets/github.svg";
+import instagram from "./assets/instagram.svg";
+import soundcloud from "./assets/soundcloud.svg";
+import pfp from "./assets/pfp.png";
+import Dither from "./components/Dither";
+import ColorBends from "./components/ColorBends";
+
 // import Silk from "./components/Silk";
-import DarkVeil from "./components/DarkVeil";
+// import DarkVeil from "./components/DarkVeil";
+// import FloatingLines from "./components/FloatingLines";
+// import Iridescence from "./components/Iridescence";
+// import Lightning from "./components/Lightning";
+// import PrismaticBurst from "./components/PrismaticBurst";
 
 export default function Layout() {
 	const isMobile = useIsMobile();
@@ -25,17 +35,17 @@ export default function Layout() {
 	const Links: Link[] = [
 		{
 			title: "SoundCloud",
-			image: "/soundcloud.svg",
+			image: soundcloud,
 			url: "https://soundcloud.com/clxakz",
 		},
 		{
 			title: "GitHub",
-			image: "/github.svg",
+			image: github,
 			url: "https://github.com/clxakz",
 		},
 		{
 			title: "Instagram",
-			image: "/instagram.svg",
+			image: instagram,
 			url: "https://www.instagram.com/clxakz.movie/",
 		},
 	];
@@ -47,20 +57,60 @@ export default function Layout() {
 			transition={{ type: "tween", duration: 1.0, delay: 0.5 }}
 			className="h-screen relative select-none"
 		>
-			{/* <Dither
-				waveColor={[0.5, 0.5, 0.5]}
-				disableAnimation={false}
-				enableMouseInteraction={true}
-				mouseRadius={0.3}
-				colorNum={4}
-				waveAmplitude={0.3}
-				waveFrequency={3}
-				waveSpeed={0.05}
+			{/* <FloatingLines
+				linesGradient={["#f191f9", "#873a5b"]}
+				animationSpeed={1.1}
+				interactive
+				bendRadius={7}
+				bendStrength={-0.5}
+				mouseDamping={0.05}
+				parallax
+				parallaxStrength={0.2}
 			/> */}
 
-			{/* <Silk speed={5} scale={1} color="#ffffff" noiseIntensity={1.5} rotation={0} /> */}
+			{/* <DarkVeil hueShift={0} noiseIntensity={0} scanlineIntensity={0} speed={1} scanlineFrequency={0} warpAmount={0} resolutionScale={1} /> */}
 
-			<DarkVeil hueShift={0} noiseIntensity={0} scanlineIntensity={0} speed={0.5} scanlineFrequency={0} warpAmount={0} resolutionScale={1} />
+			{/* <PrismaticBurst
+				intensity={2}
+				speed={0.5}
+				animationType="rotate3d"
+				colors={["#ffffff", "#caa0eb", "#f0cec8"]}
+				distort={0}
+				hoverDampness={0}
+				rayCount={0}
+			/> */}
+
+			{/* <Iridescence speed={0.4} amplitude={0.1} mouseReact color={[0.741, 0.525, 0.239]} /> */}
+			{/* <Lightning hue={219} xOffset={0} speed={1.4} intensity={1.5} size={1.1} /> */}
+			{/* <Silk speed={5} scale={1} color="#6446a3" noiseIntensity={1.5} rotation={0} /> */}
+
+			{isMobile ? (
+				<Dither
+					waveColor={[0.9764705882352941, 0.984313725490196, 0.792156862745098]}
+					disableAnimation={false}
+					enableMouseInteraction={false}
+					mouseRadius={1}
+					colorNum={7}
+					pixelSize={2}
+					waveAmplitude={0.2}
+					waveFrequency={3.5}
+					waveSpeed={0.04}
+				/>
+			) : (
+				<ColorBends
+					rotation={60}
+					speed={0.2}
+					colors={["#693dc7", "#581258", "#5353d5"]}
+					transparent
+					autoRotate={1}
+					scale={1.1}
+					frequency={0.8}
+					warpStrength={1.1}
+					mouseInfluence={1}
+					parallax={0.2}
+					noise={0.2}
+				/>
+			)}
 
 			<motion.main
 				initial={{ scale: 0.5 }}
@@ -77,7 +127,7 @@ export default function Layout() {
 								transition={{ delay: 0.6, type: "spring", damping: 8, stiffness: 50 }}
 							>
 								<Avatar className="size-20">
-									<AvatarImage src="/pfp.png" />
+									<AvatarImage src={pfp} />
 									<AvatarFallback>CA</AvatarFallback>
 								</Avatar>
 							</motion.div>
@@ -135,7 +185,6 @@ export default function Layout() {
 								className="rounded-md outline-none"
 								width="100%"
 								height="130"
-								allow="autoplay"
 								src={`https://w.soundcloud.com/player/?url=${encodeURIComponent(
 									"https://soundcloud.com/clxakz/semper-fi"
 								)}&visual=true`}

@@ -148,7 +148,7 @@ export default function Layout() {
 								>
 									<ShinyText
 										className="text-lg"
-										text="full-stack developer"
+										text="software engineer"
 										speed={2}
 										delay={0}
 										color="#b5b5b5"

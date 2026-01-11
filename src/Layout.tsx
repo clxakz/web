@@ -119,7 +119,7 @@ export default function Layout() {
 				className="absolute inset-0 flex items-center justify-center pointer-events-none"
 			>
 				<GlassSurface width={MainSurfaceSize.width} height={MainSurfaceSize.height} className="pointer-events-auto">
-					<div className="flex flex-col h-full w-full gap-2 p-4">
+					<div className="flex flex-col justify-between h-full w-full gap-2 p-4">
 						<section className="flex justify-between w-full h-fit">
 							<motion.div
 								initial={{ opacity: 0, scale: 0.0, y: 50 }}
@@ -162,7 +162,7 @@ export default function Layout() {
 							</article>
 						</section>
 
-						<motion.section
+						{/* <motion.section
 							initial={{ scale: 0.0, y: 60, filter: "blur(5px)" }}
 							animate={{ scale: 1.0, y: 0, filter: "blur(0px)" }}
 							transition={{ delay: 1.1, type: "spring", stiffness: 50, damping: 9 }}
@@ -189,7 +189,7 @@ export default function Layout() {
 									"https://soundcloud.com/clxakz/semper-fi"
 								)}&visual=true`}
 							></iframe>
-						</motion.section>
+						</motion.section> */}
 
 						<section className="flex flex-col-reverse gap-2">
 							{Links.map((link, index) => (
